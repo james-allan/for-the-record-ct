@@ -33,8 +33,10 @@ npm install
 
 ### Available Scripts
 
-- **Build the project** - Compiles the TypeScript source files to JavaScript:
+- **Build the project** - Compiles the TypeScript and Tailwind source files:
    - `npm run build`
+- **Build the CSS files:** - Compliles Tailwind source files:
+   - `npm run build:css`
 - **Start a local server** - Serves the project files locally:
    - `npm run serve`
 - **Execute tests**:
