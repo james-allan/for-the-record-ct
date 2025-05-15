@@ -1,6 +1,6 @@
 # For The Record Code Test - James Allan
 
-This is my approach to complete the Fibonacci Frequency Code test for For the Record.
+This is my approach to the Fibonacci Frequency Code test for **For the Record**.
 
 It's a browser-based web application built with HTML, CSS, and TypeScript. It runs entirely in the browser, with no backend dependencies. The app features interactive UI components, timed behaviours, and modular TypeScript code with unit tests powered by Jest.
 
