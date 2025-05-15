@@ -43,6 +43,22 @@ npm install
   - `npm test`
 - **Run build, serve, and tests together** - Builds the project, starts the server in the background, and runs the test suite:
   - `npm run start:all`
+ 
+
+### Testing Intructions
+
+1. Clone this repository
+    - `git clone https://github.com/james-allan/for-the-record-ct.git`
+3. Navigate to the root directory of this repository
+    - `cd for-the-record-ct`
+5. (Optional) Use Node.js v18+
+    - _If you're using nvm, run:_ `nvm install & nvm use` 
+7. Install dependencies
+    - Run `npm install`
+9. Build, test, and serve the app
+    - Run `npm run start:all`
+    - This command will build, run the test suite and start a local server you can test on.
+11. Go to `http://localhost:<port>`. The port will depend on where serve started the server.
 
 ### Project Structure
 
