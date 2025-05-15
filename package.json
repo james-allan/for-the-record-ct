@@ -2,8 +2,11 @@
   "name": "code-test-new",
   "version": "1.0.0",
   "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+ "scripts": {
+    "build": "tsc",
+    "serve": "serve .",
+    "test": "jest",
+    "start:all": "npm run build && npm run serve & npm run test"
   },
   "type": "module",
   "keywords": [],
