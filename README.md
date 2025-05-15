@@ -18,7 +18,7 @@ Follow these steps to build and run the project locally.
 1. Install Node (recommended: version v22.15.1).
 2. Optionally install NVM to manage Node versions: https://github.com/nvm-sh/nvm
 
-Then, if you have NVM installed:
+If you have NVM installed:
 
 ```bash
 nvm install & nvm use
