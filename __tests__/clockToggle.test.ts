@@ -17,13 +17,6 @@ describe( 'ClockToggle', () => {
 		expect( mockCallback ).toHaveBeenCalled();
 	} );
 
-	it( 'should disable the button when disable() is called', () => {
-		expect( toggleButton.disabled ).toBe( false );
-
-		clockToggle.disable();
-		expect( toggleButton.disabled ).toBe( true );
-	} );
-
 	it( 'should be isReady() when the element is present', () => {
 		expect( clockToggle.isReady() ).toBe( true );
 	} );
@@ -35,6 +28,38 @@ describe( 'ClockToggle', () => {
 		expect( brokenToggle.isReady() ).toBe( false );
 	} );
 
+	it( 'should disable the button when disable() is called', () => {
+		expect( toggleButton.disabled ).toBe( false );
 
+		clockToggle.disable();
+		expect( toggleButton.disabled ).toBe( true );
+	} );
+
+	it( 'should enable the button when enable() is called', () => {
+		clockToggle.disable();
+		expect( toggleButton.disabled ).toBe( true );
+
+		clockToggle.enable();
+		expect( toggleButton.disabled ).toBe( false );
+	} );
+
+	it( 'should toggle the state of the button', () => {
+		expect( clockToggle.state ).toBe( 'running' ); // Default state is running.
+
+		toggleButton.click();
+		expect( clockToggle.state ).toBe( 'paused' );
+
+		toggleButton.click();
+		expect( clockToggle.state ).toBe( 'running' );
+	} );
+
+	it( 'should change the text of the button when the state is running', () => {
+		expect( toggleButton.textContent ).toBe( 'Halt 🛑' );
+
+		toggleButton.click();
+		expect( toggleButton.textContent ).toBe( 'Resume ▶️' );
+
+		toggleButton.click();
+		expect( toggleButton.textContent ).toBe( 'Halt 🛑' );
+	} );
 });
-

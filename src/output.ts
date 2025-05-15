@@ -15,7 +15,7 @@ export class Output {
 	/**
 	 * Write a message to the output element.
 	 *
-	 * @param message
+	 * @param message The message to write to the output element.
 	 */
 	write( message: string ): void {
 		if ( this.output ) {

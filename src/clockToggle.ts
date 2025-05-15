@@ -12,6 +12,8 @@ export class ClockToggle {
 
 	/**
 	 * Constructor.
+	 *
+	 * @param toggleCallback The function to call when the button is clicked.
 	 */
 	constructor( toggleCallback: Function ) {
 		this.toggleButton = document.getElementById( 'clockToggle' ) as HTMLInputElement;
@@ -32,7 +34,7 @@ export class ClockToggle {
 	/**
 	 * Changes the text of the button.
 	 */
-	toggleState() {
+	toggleState(): void {
 		this.state = this.state === 'running' ? 'paused' : 'running';
 		this.setTextFromState();
 	}
@@ -40,7 +42,7 @@ export class ClockToggle {
 	/**
 	 * Sets the text of the button.
 	 */
-	setTextFromState() {
+	setTextFromState(): void {
 		if ( this.toggleButton ) {
 			this.toggleButton.innerHTML = this.state === 'running' ? 'Halt 🛑' : 'Resume ▶️';
 		}
@@ -48,7 +50,8 @@ export class ClockToggle {
 
 	/**
 	 * Determines wether the clock toggle is ready.
-	 * @returns true of the button is located and ready.
+	 *
+	 * @returns boolean True if the button is ready, otherwise false.
 	 */
 	isReady(): boolean {
 		return this.toggleButton !== null;

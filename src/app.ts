@@ -82,7 +82,7 @@ export default class App {
 	/**
 	 * Returns the first 1000 Fibonacci numbers.
 	 *
-	 * @returns The first 1000 Fibonacci numbers.
+	 * @returns bigint[] The first 1000 Fibonacci numbers.
 	 */
 	getFibonacciSeries(): bigint[] {
 		const series: bigint[] = [0n, 1n];
@@ -256,6 +256,7 @@ export default class App {
 
 	/**
 	 * Updates the indicator based on the provided running status.
+	 *
 	 * @param running Whether the app clock is running. True = running. False = Halted or Terminated.
 	 */
 	updateIndictorStatus( running: boolean ): void {
