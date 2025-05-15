@@ -9,7 +9,7 @@ describe( 'ClockToggle', () => {
 		mockCallback            = jest.fn();
 		document.body.innerHTML = '<input type="checkbox" id="clockToggle" />';
 		toggleButton            = document.getElementById( 'clockToggle' ) as HTMLInputElement;
-		clockToggle             = new ClockToggle( mockCallback );
+		clockToggle             = new ClockToggle( mockCallback, 'running' );
 	} );
 
 	it( 'should call the callback when clicked', () => {
@@ -23,7 +23,7 @@ describe( 'ClockToggle', () => {
 
 	it( 'should not be isReady() when the element is missing', () => {
 		document.body.innerHTML = ''; // remove the element
-		const brokenToggle = new ClockToggle( mockCallback );
+		const brokenToggle = new ClockToggle( mockCallback, 'running' );
 
 		expect( brokenToggle.isReady() ).toBe( false );
 	} );
@@ -61,5 +61,15 @@ describe( 'ClockToggle', () => {
 
 		toggleButton.click();
 		expect( toggleButton.textContent ).toBe( 'Halt 🛑' );
+	} );
+
+	it ( 'should change the state and text of the button when the state is toggled', () => {
+		clockToggle.toggleState();
+		expect( toggleButton.textContent ).toBe( 'Resume ▶️' );
+		expect( clockToggle.state ).toBe( 'paused' );
+
+		clockToggle.toggleState();
+		expect( toggleButton.textContent ).toBe( 'Halt 🛑' );
+		expect( clockToggle.state ).toBe( 'running' );
 	} );
 });

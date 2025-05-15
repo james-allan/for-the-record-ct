@@ -67,7 +67,7 @@ export default class App {
 	constructor() {
 		this.output      = new Output();
 		this.input       = new Input( this.handleInput );
-		this.clockToggle = new ClockToggle( this.toggleClock );
+		this.clockToggle = new ClockToggle( this.toggleClock, 'running' );
 		this.indicator   = new StatusIndicator();
 
 		if ( ! this.input.isReady() || ! this.clockToggle.isReady() ) {
@@ -196,10 +196,15 @@ export default class App {
 		// Write the inputted value to the output field.
 		this.output.write( inputValue );
 
+		// Normalise the input value.
+		inputValue = inputValue.trim().toLowerCase();
+
 		// Handle Quit input.
-		if ( 'quit' === inputValue.trim().toLowerCase() ) {
+		if ( 'quit' === inputValue ) {
 			this.terminate();
 			return true;
+		} else if ( 'resume' === inputValue || 'halt' === inputValue ) {
+			return this.handleClockToggle( inputValue );
 		} else if ( ! this.seconds ) {
 			this.handleTimingInput( inputValue );
 			return true;
@@ -219,6 +224,27 @@ export default class App {
 		this.output.write( 'Please enter the next number.' );
 
 		return true;
+	}
+
+	/**
+	 * Handles the clock toggle input.
+	 *
+	 * @param inputValue The user's inputted value.
+	 * @returns boolean True if the input was handled successfully, otherwise false.
+	 */
+	handleClockToggle( inputValue: 'resume' | 'halt' ): boolean {
+		if (
+			( 'resume' === inputValue && this.clockToggle.state === 'paused' ) ||
+			( 'halt' === inputValue && this.clockToggle.state === 'running' )
+		) {
+			this.toggleClock();
+			this.clockToggle.toggleState();
+			return true;
+		}
+
+		// If the input wasn't handled successfully, output an error message.
+		this.output.write( 'An error occurred toggling the clock. Please try again.' );
+		return false;
 	}
 
 	/**

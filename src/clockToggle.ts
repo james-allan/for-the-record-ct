@@ -8,15 +8,17 @@ export class ClockToggle {
 	/**
 	 * The state of the clock.
 	 */
-	state: 'running' | 'paused' = 'running';
+	state: 'running' | 'paused';
 
 	/**
 	 * Constructor.
 	 *
 	 * @param toggleCallback The function to call when the button is clicked.
+	 * @param toggleState The state of the clock.
 	 */
-	constructor( toggleCallback: Function ) {
+	constructor( toggleCallback: Function, toggleState: 'running' | 'paused' ) {
 		this.toggleButton = document.getElementById( 'clockToggle' ) as HTMLInputElement;
+		this.state        = toggleState;
 
 		if ( this.toggleButton === null ) {
 			return;

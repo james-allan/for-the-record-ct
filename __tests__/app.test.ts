@@ -21,9 +21,12 @@ jest.mock( '../src/output', () => {
 
 jest.mock( '../src/clockToggle', () => {
 	return {
-		ClockToggle: jest.fn().mockImplementation((onClick) => ({
+		ClockToggle: jest.fn().mockImplementation( ( onClick ) => ({
 			isReady: () => true,
 			disable: jest.fn(),
+			toggleState: jest.fn(),
+			setTextFromState: jest.fn(),
+			enable: jest.fn(),
 			onClick,
 		})),
 	};
@@ -139,5 +142,35 @@ describe( 'App', () => {
 		app.outputFrequencies();
 
 		expect( writeSpy ).toHaveBeenCalledWith( '10:2 5:1' );
+	} );
+
+	it ( 'does generate 1000 fibonacci numbers', () => {
+		expect( app.getFibonacciSeries().length ).toBe( 1000 );
+	} );
+
+	it ( 'does toggle the handleClockToggle() element when the input is "resume" or "halt"', () => {
+		app.clockToggle.state = 'paused';
+		app.handleClockToggle( 'resume' );
+
+		expect( app.clockToggle.toggleState ).toHaveBeenCalled();
+
+		app.clockToggle.state = 'running';
+		app.handleClockToggle( 'halt' );
+
+		expect( app.clockToggle.toggleState ).toHaveBeenCalled();
+	} );
+
+	it ( 'does not toggle the handleClockToggle() element when the input is not valid', () => {
+		app.clockToggle.state = 'paused';
+		app.handleClockToggle( 'halt' ); // "halt" is not a valid input for a paused clock.
+
+		expect( app.clockToggle.toggleState ).not.toHaveBeenCalled();
+		expect( writeSpy ).toHaveBeenCalledWith( 'An error occurred toggling the clock. Please try again.' );
+
+		app.clockToggle.state = 'running';
+		app.handleClockToggle( 'resume' ); // "resume" is not a valid input for a running clock.
+
+		expect( app.clockToggle.toggleState ).not.toHaveBeenCalled();
+		expect( writeSpy ).toHaveBeenCalledWith( 'An error occurred toggling the clock. Please try again.' );
 	} );
 });
