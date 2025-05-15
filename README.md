@@ -141,6 +141,13 @@ For deployment specificially it would depend on the host, but I'd setup a CI/CD 
 2. Running tests
 3. Deploy the site automatically on push to the `main` or `production` branch, or trigger deployment manually via a GitHub Action if more control is preferred.
 
+**Considering Frameworks for Scalability**
+While a static HTML/JS/CSS approach is fine for simple applications, in a production environment I would consider using a component-based framework like React or Vue, etc. This is for a couple of reasons:
+
+1. Better state management as the app grows
+2. Modular, reusable components
+3. Easier integration of routing, global state, and side effects
+
 ### Question 3
 
 > What did you think about this coding test - is there anything you’d suggest in order to improve it?
