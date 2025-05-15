@@ -4,9 +4,8 @@ This is my approach to the Fibonacci Frequency Code test for **For the Record**.
 
 It's a browser-based web application built with HTML, CSS, and TypeScript. It runs entirely in the browser, with no backend dependencies. The app features interactive UI components, timed behaviours, and modular TypeScript code with unit tests powered by Jest.
 
-<p align="center">
-<img width="697" alt="Screenshot 2025-05-16 at 12 33 34 am" src="https://github.com/user-attachments/assets/e987e9b3-7409-4457-9735-6fac789781c3" />
-</p>
+| <img width="697" alt="Screenshot 2025-05-16 at 12 33 34 am" src="https://github.com/user-attachments/assets/e987e9b3-7409-4457-9735-6fac789781c3" />  | <img width="691" alt="Screenshot 2025-05-16 at 12 49 34 am" src="https://github.com/user-attachments/assets/dd3be34e-19f1-4be5-8119-959939c89e84" /> |
+| ------------- | ------------- |
 
 ## Getting Started
 
