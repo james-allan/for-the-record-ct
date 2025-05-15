@@ -147,6 +147,6 @@ For deployment specificially it would depend on the host, but I'd setup a CI/CD 
 
 This coding test was actually really interesting and fun. It struck a nice balance between simplicity and challenge. I appreciated the freedom to approach the UI however I liked, using whatever tools or technologies I was comfortable with.
 
-As for suggestions to improve it, I think it depends on what you're hoping to assess. For example, if the goal is to see whether a candidate uses a particular language, framework, or testing approach unprompted, that’s fine, but it might help to make the assessment criteria more explicit. Since the task itself is quite simple in its prompt but open-ended in scope, it can be hard to know what level of complexity or polish is expected.
+As for suggestions to improve it, I think it depends on what you're hoping to assess. For example, if the goal is to see whether a candidate uses a particular language, framework, or testing approach unprompted, it’s fine, but it might help to make the assessment criteria more explicit. Since the task itself is quite simple in its prompt but open-ended in scope, it can be hard to know what level of complexity or polish is expected.
 
 Overall though, it was a creative and engaging test, and I enjoyed working on it.
