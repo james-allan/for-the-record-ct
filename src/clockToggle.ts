@@ -6,6 +6,11 @@ export class ClockToggle {
 	toggleButton: HTMLInputElement | null;
 
 	/**
+	 * The state of the clock.
+	 */
+	state: 'running' | 'paused' = 'running';
+
+	/**
 	 * Constructor.
 	 */
 	constructor( toggleCallback: Function ) {
@@ -15,10 +20,30 @@ export class ClockToggle {
 			return;
 		}
 
+		this.setTextFromState();
+
 		// Register the event handlers.
 		this.toggleButton.addEventListener( 'click', () => {
 			toggleCallback();
+			this.toggleState();
 		} );
+	}
+
+	/**
+	 * Changes the text of the button.
+	 */
+	toggleState() {
+		this.state = this.state === 'running' ? 'paused' : 'running';
+		this.setTextFromState();
+	}
+
+	/**
+	 * Sets the text of the button.
+	 */
+	setTextFromState() {
+		if ( this.toggleButton ) {
+			this.toggleButton.innerHTML = this.state === 'running' ? 'Halt 🛑' : 'Resume ▶️';
+		}
 	}
 
 	/**
@@ -35,6 +60,15 @@ export class ClockToggle {
 	disable(): void {
 		if ( this.toggleButton ) {
 			this.toggleButton.disabled = true;
+		}
+	}
+
+	/**
+	 * Enables the element.
+	 */
+	enable(): void {
+		if ( this.toggleButton ) {
+			this.toggleButton.disabled = false;
 		}
 	}
 }

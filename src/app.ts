@@ -173,6 +173,8 @@ export default class App {
 		}
 
 		this.setClockAndStart( seconds );
+		this.clockToggle.enable();
+
 		this.output.write( 'Please enter the first number.' );
 	}
 
