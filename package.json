@@ -7,7 +7,7 @@
     "build:css": "tailwindcss -i ./styles/input.css -o ./public/styles.css --minify",
     "serve": "serve .",
     "test": "jest",
-    "start:all": "npm run build && npm run serve & npm run test"
+    "start:all": "npm run test && npm run build && npm run serve"
   },
   "type": "module",
   "keywords": [],
