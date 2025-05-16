@@ -173,4 +173,28 @@ describe( 'App', () => {
 		expect( app.clockToggle.toggleState ).not.toHaveBeenCalled();
 		expect( writeSpy ).toHaveBeenCalledWith( 'An error occurred toggling the clock. Please try again.' );
 	} );
+
+	it( 'does not start the clock if the input is 0', () => {
+		app.handleTimingInput( '0' );
+		expect( app.running ).toBe( false );
+		expect( writeSpy ).toHaveBeenCalledWith( 'The value you inputted is not a positive integer. Please enter a number.' );
+	} );
+
+	it( 'does not start the clock if the input is not a number', () => {
+		app.handleTimingInput( 'not a number' );
+		expect( app.running ).toBe( false );
+		expect( writeSpy ).toHaveBeenCalledWith( 'The value you inputted is not a positive integer. Please enter a number.' );
+	} );
+
+	it( 'does not start the clock if the input is a negative number', () => {
+		app.handleTimingInput( '-1' );
+		expect( app.running ).toBe( false );
+		expect( writeSpy ).toHaveBeenCalledWith( 'The value you inputted is not a positive integer. Please enter a number.' );
+	} );
+
+	it( 'does start the clock if the input is a positive integer', () => {
+		app.handleTimingInput( '5' );
+		expect( app.running ).toBe( true );
+		expect( app.seconds ).toBe( 5 );
+	} );
 });
