@@ -167,7 +167,7 @@ export default class App {
 		const seconds = parseInt( input, 10 );
 
 		// Handle cases where the input wasn't an int or was negative.
-		if ( isNaN( seconds ) || seconds < 0 ) {
+		if ( isNaN( seconds ) || seconds <= 0 ) {
 			this.output.write( 'The value you inputted is not a positive integer. Please enter a number.' );
 			return;
 		}
